@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { BiSolidUser } from "react-icons/bi";
 
 const NavBarItems = () => {
   const { userName } = useSelector((state) => state.user);
@@ -11,7 +12,7 @@ const NavBarItems = () => {
   return (
     <>
       <div className="title">
-        <h1>Bizzo</h1>
+        <h1>BIZZO REACT</h1>
       </div>
       <div className="search">
         <form onSubmit={submit}>
@@ -19,8 +20,9 @@ const NavBarItems = () => {
         </form>
       </div>
       {userName && (
-        <div>
-          <h3>{userName}</h3>
+        <div className="user">
+          <BiSolidUser />
+          <h3 className="username">{userName}</h3>
         </div>
       )}
     </>
