@@ -11,7 +11,7 @@ const NavBarItems = () => {
   return (
     <>
       <div className="title">
-        <h1>Fast React Pizza</h1>
+        <h1>Bizzo</h1>
       </div>
       <div className="search">
         <form onSubmit={submit}>
