@@ -6,6 +6,7 @@ const NavBarItems = () => {
   const { userName } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const submit = (event) => {
+    event.preventDefault();
     navigate(`/order/${event.target.id.value}`);
   };
 
