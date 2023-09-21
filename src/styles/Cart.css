@@ -5,6 +5,7 @@
   justify-content: center;
   gap: 40px;
   padding-top: 60px;
+  padding-bottom: 30px;
 }
 
 .orders input {
