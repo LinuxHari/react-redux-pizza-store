@@ -1,0 +1,94 @@
+.place-order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+.order-contents {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50vw;
+}
+
+.order-contents .caption {
+  padding: 25px 0px;
+}
+
+.order-contents .order-details {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0px;
+}
+
+.order-contents .order-details .order-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.order-contents .order-details .data-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.order-contents .order-details input {
+  height: 30px;
+  width: min(550px, 100%);
+  border: 2px solid lightgray;
+  border-radius: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.order-contents input[type="checkbox"] {
+  height: 30px;
+  width: 25px;
+  padding: 0px;
+}
+
+.order-contents .order-priority {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-bottom: 50px;
+  align-items: center;
+  font-weight: 600;
+}
+
+.place-order-btn {
+  background-color: rgb(248, 123, 98);
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 15px 25px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  word-spacing: 5px;
+  cursor: pointer;
+}
+
+.checkbox {
+  accent-color: rgb(248, 123, 98);
+}
+
+.message {
+  text-align: center;
+}
+
+@media screen and (max-width: 1360px) {
+  .order-contents .order-details div {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1360px) {
+  .place-order {
+    padding: 130px;
+  }
+}

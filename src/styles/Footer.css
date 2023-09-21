@@ -1,0 +1,19 @@
+footer {
+  background-color: black;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+
+footer .data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+h3 a {
+  text-decoration: none;
+  color: white;
+}

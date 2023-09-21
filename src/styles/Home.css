@@ -1,0 +1,80 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  width: 100vw;
+  padding: 60px 0px;
+}
+
+.content .details {
+  padding: 80px;
+  text-align: center;
+}
+
+.content .theme {
+  font-size: 40px;
+}
+
+.content .data-submit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  gap: 20px;
+}
+
+.content .data-submit .username {
+  width: 250px;
+  height: 25px;
+}
+
+.content .message {
+  word-spacing: 10px;
+  font-size: 20px;
+}
+
+.content .username {
+  border-radius: 25px;
+  padding: 5px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.content .username:hover {
+  font-size: 20px;
+}
+
+.content .submit {
+  padding: 7px 45px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: var(--bg-color);
+  border: none;
+}
+
+.wrap {
+  text-wrap: wrap;
+  color: var(--bg-color);
+}
+
+.link {
+  background-color: var(--bg-color);
+  text-decoration: none;
+  color: black;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 40px;
+  text-transform: uppercase;
+  word-spacing: 5px;
+}
+
+@media screen and (max-width: 576px) {
+  .link {
+    font-size: 12px;
+    word-spacing: 3px;
+    width: 60vw;
+  }
+}
