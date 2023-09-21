@@ -5,6 +5,7 @@
 .menu {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   padding: 50px 0px;
+  overflow-x: hidden;
 }
 
 .menu-items {
@@ -115,6 +116,11 @@
     padding: 5px;
     width: 30px;
     height: 30px;
+  }
+  .menu-item .delete {
+    padding: 10px;
+    height: 30px;
+    width: auto;
   }
 }
 

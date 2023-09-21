@@ -81,14 +81,21 @@
 }
 
 @media screen and (max-width: 1360px) {
-  .order-contents .order-details div {
+  .order-contents .order-details .data-field {
     display: flex;
     flex-direction: column;
   }
 }
 
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: 576px) {
   .place-order {
-    padding: 130px;
+    padding-top: 110px;
+    width: auto;
+  }
+  .order-contents {
+    width: 100%;
+  }
+  .order-contents .order-priority {
+    padding-bottom: 25px;
   }
 }

@@ -8,7 +8,7 @@ const Footer = () => {
   const totalPrice = useSelector(getTotalPrice);
   return (
     <>
-      {quantity && (
+      {quantity > 0 && (
         <footer>
           <div className="data">
             <h3>
