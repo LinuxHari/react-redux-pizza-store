@@ -107,6 +107,13 @@
   background-color: rgb(248, 123, 98);
   cursor: pointer;
 }
+.error {
+  text-align: center;
+}
+
+.id {
+  color: red;
+}
 
 @media screen and (max-width: 1124px) {
   .order-name {
