@@ -1,4 +1,6 @@
-# A pizza store created with React in which users can order pizzas and track those orders.
+<a href = "https://bizzo-react.netlify.app/">Visit Bizzo</a>
+
+# Bizzo a pizza store created with React in which users can order pizzas and track those orders.
 
 #### Here `Redux Toolkit` is used for state management.
 
