@@ -8,9 +8,9 @@ const Order = () => {
   const { orders, priorityCharge } = useSelector((state) => state.order);
   const dispatch = useDispatch();
   const { id } = useParams();
-  const order = orders.find((order) => order.id === id);
+  const order = orders.find((order) => order.id === id) || "";
   const remainingTime =
-    order && order.length ? getRemainingTime(order.deliveryTime) : false;
+    order !== undefined ? getRemainingTime(order.deliveryTime) : 0;
   const orderStatus = getOrderStatus(remainingTime);
 
   return (
