@@ -90,7 +90,7 @@
 }
 
 .error {
-  width: min(550px, 100%);
+  width: min(40vw, 100%);
   background-color: rgb(234, 207, 207);
   color: rgb(219, 0, 0);
   margin: 5px;
@@ -144,5 +144,8 @@
     width: 98vw;
     display: flex;
     justify-content: flex-start;
+  }
+  .error {
+    width: 60vw;
   }
 }
