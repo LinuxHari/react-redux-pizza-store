@@ -1,11 +1,3 @@
-// export const getQuantity = (cartList) => {
-//     return cartList.reduce((accumulator,item) => accumulator + item.quantity,0)
-// }
-
-// export const getPrice = (cartList) => {
-//     return cartList.reduce((accumulator,item) => accumulator + item.quantity * item.price,0)
-// }
-
 export const deleteItem = (cartList, id) => {
   return cartList.filter((item) => item.id !== id);
 };

@@ -27,14 +27,15 @@ const Home = () => {
         <h1 className="theme">
           The best pizza. <br />
           <span className="wrap">
-            Straight out of the oven, straight to you.
+            Straight out of the oven, straight to <br />
+            you.
           </span>
         </h1>
         <form action="" className="data-submit" onSubmit={(e) => setUser(e)}>
           {!user && (
             <>
               <p className="message" id="message">
-                Welcome! Please start by telling us your name:
+                👋 Welcome! Please start by telling us your name:
               </p>
               <input
                 type="text"
@@ -42,7 +43,7 @@ const Home = () => {
                 id="username"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
-                placeholder="Your Name"
+                placeholder="Your full name"
                 autoComplete="off"
                 required
               />

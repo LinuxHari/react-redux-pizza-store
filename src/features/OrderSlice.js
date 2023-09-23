@@ -4,7 +4,6 @@ import { getTime } from "../helpers/orderHelper";
 const initialState = {
   orders: JSON.parse(localStorage.getItem("orders")) || [],
   userInfo: {},
-  priorityCharge: 3,
 };
 
 export const orderSlice = createSlice({
@@ -29,7 +28,12 @@ export const orderSlice = createSlice({
     changePriority: (state, action) => {
       state.orders = state.orders.map((order) =>
         order.id === action.payload.id
-          ? { ...order, isPriority: !order.isPriority }
+          ? {
+              ...order,
+              isPriority: !order.isPriority,
+              totalPrice: action.payload.totalPrice,
+              priorityCharge: action.payload.priorityCharge,
+            }
           : order
       );
       localStorage.setItem("orders", JSON.stringify(state.orders));

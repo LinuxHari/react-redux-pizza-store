@@ -12,7 +12,7 @@ const Footer = () => {
         <footer>
           <div className="data">
             <h3>
-              {quantity} PIZZAS ${totalPrice.toFixed(2)}
+              <span>{quantity} PIZZAS</span> ${totalPrice.toFixed(2)}
             </h3>
             <h3>
               <Link to="/cart" className="to-cart">

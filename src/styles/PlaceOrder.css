@@ -3,8 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 60px;
+  padding: 60px 0px;
   gap: 30px;
+  width: auto;
+  overflow-x: hidden;
 }
 
 .order-contents {
@@ -26,29 +28,33 @@
 
 .order-contents .order-details .order-detail {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px 0px;
-}
-
-.order-contents .order-details .data-field {
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 10px 0px;
+  align-items: center;
+  width: auto;
 }
-
-.order-contents .order-details input {
-  height: 30px;
-  width: min(550px, 100%);
+.data-field {
+  width: 550px;
+}
+.data-field input {
+  height: 20px;
+  padding: 10px 20px;
+  width: min(40vw, 100%);
   border: 2px solid lightgray;
   border-radius: 20px;
   font-size: 20px;
-  text-align: center;
+  transition: border 0.3s ease;
+}
+
+.data-field input:focus {
+  outline: none;
+  border: 3px solid var(--bg-color);
 }
 
 .order-contents input[type="checkbox"] {
   height: 30px;
-  width: 25px;
+  width: 30px;
   padding: 0px;
 }
 
@@ -62,7 +68,7 @@
 }
 
 .place-order-btn {
-  background-color: rgb(248, 123, 98);
+  background-color: var(--bg-color);
   border: none;
   font-size: 14px;
   font-weight: 600;
@@ -74,29 +80,69 @@
 }
 
 .checkbox {
-  accent-color: rgb(248, 123, 98);
+  accent-color: var(--bg-color);
+  border: 5px solid white;
 }
 
-.message {
-  text-align: center;
+.order-contents input[type="checkbox"]:focus {
+  border: 2px solid white;
+  outline: 3px solid var(--bg-color);
+}
+
+.error {
+  width: min(550px, 100%);
+  background-color: rgb(234, 207, 207);
+  color: rgb(219, 0, 0);
+  margin: 5px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  align-items: center;
+}
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 18px;
+  padding-top: 15px;
+}
+.empty h1 {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 1360px) {
-  .order-contents .order-details .data-field {
+  .order-contents .order-details .order-detail {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 }
 
 @media screen and (max-width: 576px) {
   .place-order {
-    padding-top: 130px;
-    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 11px;
   }
   .order-contents {
-    width: 100%;
+    width: 80vw;
   }
   .order-contents .order-priority {
     padding-bottom: 25px;
+  }
+  .data-field input {
+    width: 60vw;
+  }
+
+  .order-contents input[type="checkbox"]:focus {
+    outline: none;
+  }
+  .empty {
+    width: 98vw;
+    display: flex;
+    justify-content: flex-start;
   }
 }

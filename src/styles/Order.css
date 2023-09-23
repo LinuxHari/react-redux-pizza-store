@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  padding: 60px 20px;
+  padding: 80px 20px;
 }
 
 .order-name {
@@ -104,9 +104,10 @@
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
-  background-color: rgb(248, 123, 98);
+  background-color: var(--bg-color);
   cursor: pointer;
 }
+
 .error {
   text-align: center;
 }
@@ -150,9 +151,6 @@
   }
 }
 @media screen and (max-width: 576px) {
-  .order-status {
-    padding-top: 130px;
-  }
   .order-name,
   .order-time,
   .order-items,

@@ -56,14 +56,16 @@ const Cart = () => {
             </div>
           ))
         ) : (
-          <h1>Your Cart is empty...</h1>
+          <h1 className="empty">
+            Your cart is still empty. Start adding some pizzas :)
+          </h1>
         )}
         {cartItems.length > 0 && (
           <div className="order-actions">
             <input
               type="button"
               className="order-btn"
-              value="Order"
+              value="Order Pizzas"
               onClick={submitOrder}
             />
             <input

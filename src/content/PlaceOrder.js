@@ -2,24 +2,31 @@ import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { setInfo, changePriority } from "../features/OrderSlice";
-import { clearCart, getTotalPrice } from "../features/CartSlice";
+import { clearCart, getQuantity, getTotalPrice } from "../features/CartSlice";
 import { useState } from "react";
 import "../styles/PlaceOrder.css";
 
 const PlaceOrder = () => {
+  const totalPrice = useSelector(getTotalPrice);
+  const quantity = useSelector(getQuantity);
+  const { userName } = useSelector((state) => state.user);
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
   const navigate = useNavigate();
   const { cartItems } = useSelector((state) => state.cart);
-  const totalPrice = useSelector(getTotalPrice);
   const dispatch = useDispatch();
   const location = useLocation();
   const [isChecked, setIsChecked] = useState(false);
   const id = location.state.id;
+  const priorityCharge = parseFloat((quantity * 3.2).toFixed(2));
 
   const clicked = () => {
+    if (isChecked !== true) {
+      dispatch(changePriority({ id, totalPrice, priorityCharge }));
+    } else {
+      dispatch(changePriority({ id, totalPrice, priorityCharge: 0 }));
+    }
     setIsChecked(!isChecked);
-    dispatch(changePriority({ id }));
   };
 
   const submitForm = (data) => {
@@ -41,10 +48,13 @@ const PlaceOrder = () => {
           </div>
           <div className="order-details">
             <div className="order-detail">
-              <div className="data-field">
+              <div className="label">
                 <p>First Name</p>
+              </div>
+              <div className="data-field">
                 <input
                   type="text"
+                  defaultValue={userName}
                   {...register("firstName", {
                     required: {
                       value: true,
@@ -56,14 +66,16 @@ const PlaceOrder = () => {
                     },
                   })}
                 />
+                {errors.firstName && (
+                  <p className="error">{errors.firstName.message}</p>
+                )}
               </div>
-              <p className="message">
-                {errors.firstName && errors.firstName.message}
-              </p>
             </div>
             <div className="order-detail">
-              <div className="data-field">
+              <div className="label">
                 <p>Phone Number</p>
+              </div>
+              <div className="data-field">
                 <input
                   type="text"
                   {...register("phoneNumber", {
@@ -78,31 +90,33 @@ const PlaceOrder = () => {
                     },
                   })}
                 />
+                {errors.phoneNumber && (
+                  <p className="error">{errors.phoneNumber.message}</p>
+                )}
               </div>
-              <p className="message">
-                {errors.phoneNumber && errors.phoneNumber.message}
-              </p>
             </div>
             <div className="order-detail">
-              <div className="data-field">
+              <div className="label">
                 <p>Address</p>
+              </div>
+              <div className="data-field">
                 <input
                   type="text"
                   {...register("address", {
                     required: {
                       value: true,
-                      message: "Address name is required",
+                      message: "Address is required",
                     },
                     minLength: {
                       value: 10,
-                      message: "Address must be at least 5 characters long",
+                      message: "Address must be at least 10 digits long",
                     },
                   })}
                 />
+                {errors.address && (
+                  <p className="error">{errors.address.message}</p>
+                )}
               </div>
-              <p className="message">
-                {errors.address && errors.address.message}
-              </p>
             </div>
           </div>
           <div className="order-priority">
@@ -113,23 +127,26 @@ const PlaceOrder = () => {
               checked={isChecked}
               onChange={clicked}
             />
-            <p>Want to yo give your order priority?</p>
+            <label htmlFor="checkbox">Want to give your order priority?</label>
           </div>
           <div>
             <input
               type="submit"
               className="place-order-btn"
-              value={`Order now from $${totalPrice.toFixed(2)}`}
+              value={`Order now from $${(isChecked
+                ? totalPrice + priorityCharge
+                : totalPrice
+              ).toFixed(2)}`}
             />
           </div>
         </form>
       ) : (
-        <>
+        <div className="empty">
           <Link to="/menu" className="back">
             ← Back to menu
           </Link>
-          <h1>Your cart is empty...</h1>
-        </>
+          <h1>Your cart is still empty. Start adding some pizzas :)</h1>
+        </div>
       )}
     </section>
   );

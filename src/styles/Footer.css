@@ -13,7 +13,23 @@ footer .data {
   padding: 10px 20px;
 }
 
+h3 {
+  display: flex;
+  gap: 20px;
+}
+
 h3 a {
   text-decoration: none;
   color: white;
+}
+
+.to-cart {
+  word-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 576px) {
+  h3 {
+    font-size: 14px;
+  }
 }

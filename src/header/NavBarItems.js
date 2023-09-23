@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { BiSolidUser } from "react-icons/bi";
 
 const NavBarItems = () => {
@@ -13,11 +13,11 @@ const NavBarItems = () => {
   return (
     <>
       <div className="title">
-        <h1>BIZZO REACT</h1>
+        <Link to="/">BIZZO REACT</Link>
       </div>
       <div className="search">
         <form onSubmit={submit}>
-          <input type="text" id="id" placeholder="Search order" />
+          <input type="text" id="id" placeholder="Search order #" />
         </form>
       </div>
       {userName && (

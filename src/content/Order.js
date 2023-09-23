@@ -5,12 +5,12 @@ import "../styles/Order.css";
 import { getOrderStatus, getRemainingTime } from "../helpers/orderHelper";
 
 const Order = () => {
-  const { orders, priorityCharge } = useSelector((state) => state.order);
+  const { orders } = useSelector((state) => state.order);
   const dispatch = useDispatch();
   const { id } = useParams();
-  const order = orders.find((order) => order.id === id) || "";
-  const remainingTime =
-    order !== undefined ? getRemainingTime(order.deliveryTime) : 0;
+  const order = orders.find((order) => order.id === id);
+  const totalPrice = order.totalPrice || 0;
+  const remainingTime = order ? getRemainingTime(order.deliveryTime) : 0;
   const orderStatus = getOrderStatus(remainingTime);
 
   return (
@@ -48,12 +48,16 @@ const Order = () => {
           <div className="bill">
             <p>Price pizza: ${order.totalPrice.toFixed(2)} </p>
             {order.isPriority && (
-              <p>Price priority: ${priorityCharge.toFixed(2)}</p>
+              <p>
+                Price priority: ${Math.round(order.priorityCharge).toFixed(2)}
+              </p>
             )}
             <p>
               {remainingTime < 0 ? "Paid" : "To pay"} on delivery: $
               {order.isPriority
-                ? (order.totalPrice + priorityCharge).toFixed(2)
+                ? (order.totalPrice + Math.round(order.priorityCharge)).toFixed(
+                    2
+                  )
                 : order.totalPrice.toFixed(2)}
             </p>
           </div>
@@ -62,20 +66,28 @@ const Order = () => {
               <input
                 type="button"
                 value="Make Priority"
-                onClick={() => dispatch(changePriority({ id: order.id }))}
+                onClick={() =>
+                  dispatch(
+                    changePriority({
+                      id: order.id,
+                      priorityCharge: 3,
+                      totalPrice,
+                    })
+                  )
+                }
               />
             )}
           </div>
         </>
       ) : (
-        <>
+        <div className="empty">
           <Link to="/menu" className="back">
             ← Back to menu
           </Link>
           <h1 className="error">
             No order named <span className="id">{id}</span>...
           </h1>
-        </>
+        </div>
       )}
     </section>
   );

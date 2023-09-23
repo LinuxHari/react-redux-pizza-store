@@ -9,7 +9,6 @@ export const getTime = () => {
 export const getRemainingTime = (deliveryTime) => {
   const currentTime = new Date();
   const remainingTime = new Date(deliveryTime) - currentTime;
-  console.log();
   return Math.floor(remainingTime / (1000 * 60));
 };
 

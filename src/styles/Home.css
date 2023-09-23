@@ -26,7 +26,15 @@
 
 .content .data-submit .username {
   width: 250px;
-  height: 25px;
+  height: 35px;
+  border: 1px solid lightgray;
+  font-size: 15px;
+  padding: 5px 20px;
+  font-weight: 500;
+}
+
+.content .data-submit .username::placeholder {
+  opacity: 0.6;
 }
 
 .content .message {
@@ -37,21 +45,25 @@
 .content .username {
   border-radius: 25px;
   padding: 5px;
-  text-align: center;
   font-size: 15px;
+  outline: none;
+  transition: border 0.3s ease;
 }
 
-.content .username:hover {
-  font-size: 20px;
+.content .username:focus {
+  outline: none;
+  border: 4px solid var(--bg-color);
 }
 
 .content .submit {
-  padding: 7px 45px;
-  border-radius: 20px;
-  font-size: 18px;
+  padding: 15px 25px;
+  border-radius: 30px;
+  font-size: 15px;
   font-weight: 600;
   background-color: var(--bg-color);
   border: none;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .wrap {
@@ -73,8 +85,10 @@
 
 @media screen and (max-width: 576px) {
   .link {
-    font-size: 12px;
+    font-size: 14px;
     word-spacing: 3px;
-    width: 60vw;
+    width: 70vw;
+    padding: 15px;
+    letter-spacing: -2px;
   }
 }
