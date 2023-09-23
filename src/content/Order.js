@@ -8,9 +8,15 @@ const Order = () => {
   const { orders } = useSelector((state) => state.order);
   const dispatch = useDispatch();
   const { id } = useParams();
+<<<<<<< HEAD
   const order = orders.find((order) => order.id === id);
   const totalPrice = order.totalPrice || 0;
   const remainingTime = order ? getRemainingTime(order.deliveryTime) : 0;
+=======
+  const order = orders.find((order) => order.id === id) || "";
+  const remainingTime =
+    order !== undefined ? getRemainingTime(order.deliveryTime) : 0;
+>>>>>>> d491b042d98981bd111e342f101fd52466addd15
   const orderStatus = getOrderStatus(remainingTime);
 
   return (
