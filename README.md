@@ -10,4 +10,4 @@
 
  `CreateAsyncThunk` is used as it simplifies the process of defining and dispatching asynchronous actions.
 
- `LocalStorage` is used for storing and retrieving orders data.
+ Third party api(https://react-fast-pizza-api.onrender.com/api/) is used for menu and placing order.
