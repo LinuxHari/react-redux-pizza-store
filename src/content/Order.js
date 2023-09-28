@@ -5,18 +5,26 @@ import "../styles/Order.css";
 import { getOrder, makePriority } from "../api/orderActions";
 import FetchIngredients from "./FetchIngredients";
 import { formatDate, getRemainingTime } from "../helpers/orderHelper";
+import Loading from "../Loading";
 
 const Order = () => {
   const { id } = useParams();
   const [order, setOrder] = useState([]);
   const [isPriority, setIsPriority] = useState(false);
   const { items } = useSelector((state) => state.menu);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrder = async () => {
-      const response = await getOrder(id);
-      setOrder(response.data);
-      setIsPriority(response.data.priority);
+      try {
+        const response = await getOrder(id);
+        setOrder(response.data);
+        setIsPriority(response.data.priority);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchOrder();
   }, [id]);
@@ -28,6 +36,7 @@ const Order = () => {
 
   const remainingTime = getRemainingTime(order.estimatedDelivery);
   const deliveryTime = formatDate(order.estimatedDelivery);
+  if (isLoading) return <Loading />;
 
   return (
     <section className="order-status">

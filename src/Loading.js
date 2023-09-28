@@ -2,12 +2,7 @@ import "./styles/Loading.css";
 
 const Loading = () => {
   return (
-    <div classNameName="loading">
-      <link
-        href="https://fonts.googleapis.com/css?family=Raleway:400,600,700,900"
-        rel="stylesheet"
-      />
-
+    <div className="loading">
       <div className="box">
         <div className="pizza-slice slice-1">
           <div className="border">

@@ -10,6 +10,7 @@ const MenuItem = () => {
   const isInCart = (itemId) => {
     return cartItems.some((cartItem) => cartItem.pizzaId === itemId);
   };
+
   return (
     <>
       {items.map((item) => (

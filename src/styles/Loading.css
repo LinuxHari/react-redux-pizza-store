@@ -7,15 +7,15 @@
 }
 
 .loading {
-  font-family: "Raleway";
   background-color: transparent;
+  height: 50vh;
+  padding-top: 10px;
 }
 
 .box {
   position: relative;
   width: 200px;
   height: 200px;
-  display: block;
   margin: auto;
   margin-top: 15%;
   border-radius: 50%;
