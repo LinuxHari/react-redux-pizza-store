@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { setInfo, changePriority } from "../features/OrderSlice";
-import { clearCart, getQuantity, getTotalPrice } from "../features/CartSlice";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+
+import { placeOrder } from "../api/orderActions";
+import { clearCart, getQuantity, getTotalPrice } from "../features/CartSlice";
 import "../styles/PlaceOrder.css";
 
 const PlaceOrder = () => {
@@ -15,25 +16,19 @@ const PlaceOrder = () => {
   const navigate = useNavigate();
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const location = useLocation();
   const [isChecked, setIsChecked] = useState(false);
-  const id = location.state.id;
   const priorityCharge = parseFloat((quantity * 3.2).toFixed(2));
 
-  const clicked = () => {
-    if (isChecked !== true) {
-      dispatch(changePriority({ id, totalPrice, priorityCharge }));
-    } else {
-      dispatch(changePriority({ id, totalPrice, priorityCharge: 0 }));
-    }
-    setIsChecked(!isChecked);
-  };
-
-  const submitForm = (data) => {
-    dispatch(setInfo(data));
-    dispatch(clearCart());
+  const submitForm = async (data) => {
+    const result = await placeOrder({
+      ...data,
+      priority: isChecked,
+      cart: cartItems,
+      position: "",
+    });
+    navigate(`/order/${result.data.id}`);
     reset();
-    navigate(`/order/${id}`);
+    dispatch(clearCart());
   };
   return (
     <section className="place-order">
@@ -55,7 +50,7 @@ const PlaceOrder = () => {
                 <input
                   type="text"
                   defaultValue={userName}
-                  {...register("firstName", {
+                  {...register("customer", {
                     required: {
                       value: true,
                       message: "First name is required",
@@ -66,8 +61,8 @@ const PlaceOrder = () => {
                     },
                   })}
                 />
-                {errors.firstName && (
-                  <p className="error">{errors.firstName.message}</p>
+                {errors.customer && (
+                  <p className="error">{errors.customer.message}</p>
                 )}
               </div>
             </div>
@@ -78,7 +73,7 @@ const PlaceOrder = () => {
               <div className="data-field">
                 <input
                   type="text"
-                  {...register("phoneNumber", {
+                  {...register("phone", {
                     required: {
                       value: true,
                       message: "Phone Number is required",
@@ -90,8 +85,8 @@ const PlaceOrder = () => {
                     },
                   })}
                 />
-                {errors.phoneNumber && (
-                  <p className="error">{errors.phoneNumber.message}</p>
+                {errors.phone && (
+                  <p className="error">{errors.phone.message}</p>
                 )}
               </div>
             </div>
@@ -125,7 +120,7 @@ const PlaceOrder = () => {
               className="checkbox"
               id="checkbox"
               checked={isChecked}
-              onChange={clicked}
+              onChange={(e) => setIsChecked(e.target.checked)}
             />
             <label htmlFor="checkbox">Want to give your order priority?</label>
           </div>

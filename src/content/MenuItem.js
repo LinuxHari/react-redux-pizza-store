@@ -8,7 +8,7 @@ const MenuItem = () => {
   const dispatch = useDispatch();
 
   const isInCart = (itemId) => {
-    return cartItems.some((cartItem) => cartItem.id === itemId);
+    return cartItems.some((cartItem) => cartItem.pizzaId === itemId);
   };
   return (
     <>
@@ -53,7 +53,7 @@ const MenuItem = () => {
                         onClick={() =>
                           dispatch(
                             addItem({
-                              id: item.id,
+                              pizzaId: item.id,
                               name: item.name,
                               ingredients: item.ingredients,
                               quantity: 1,

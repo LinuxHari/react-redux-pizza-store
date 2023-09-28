@@ -1,16 +1,16 @@
-export const deleteItem = (cartList, id) => {
-  return cartList.filter((item) => item.id !== id);
+export const deleteItem = (cartList, pizzaId) => {
+  return cartList.filter((item) => item.pizzaId !== pizzaId);
 };
 
-export const incQuantity = (cartList, id) => {
+export const incQuantity = (cartList, pizzaId) => {
   return cartList.map((item) =>
-    item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+    item.pizzaId === pizzaId ? { ...item, quantity: item.quantity + 1 } : item
   );
 };
 
-export const decQuantity = (cartList, id) => {
+export const decQuantity = (cartList, pizzaId) => {
   const finalCart = cartList.map((item) =>
-    item.id === id
+    item.pizzaId === pizzaId
       ? item.quantity === 1
         ? null
         : { ...item, quantity: item.quantity - 1 }

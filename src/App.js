@@ -6,11 +6,13 @@ import Footer from "./footer/Footer";
 import Cart from "./content/Cart";
 import PlaceOrder from "./content/PlaceOrder";
 import { getMenu } from "./api/getMenu";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Order from "./content/Order";
+import Loading from "./Loading";
 
 function App() {
   const dispatch = useDispatch();
+
   return (
     <>
       <Header />

@@ -12,13 +12,13 @@ export const cartSlice = createSlice({
       state.cartItems = [...state.cartItems, action.payload];
     },
     removeItem: (state, action) => {
-      state.cartItems = deleteItem(state.cartItems, action.payload.id);
+      state.cartItems = deleteItem(state.cartItems, action.payload.pizzaId);
     },
     increaseQuantity: (state, action) => {
-      state.cartItems = incQuantity(state.cartItems, action.payload.id);
+      state.cartItems = incQuantity(state.cartItems, action.payload.pizzaId);
     },
     decreaseQuantity: (state, action) => {
-      state.cartItems = decQuantity(state.cartItems, action.payload.id);
+      state.cartItems = decQuantity(state.cartItems, action.payload.pizzaId);
     },
     clearCart: (state) => {
       state.cartItems = [];

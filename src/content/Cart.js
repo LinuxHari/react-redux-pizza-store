@@ -1,33 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../features/CartSlice";
-import { orderItem } from "../features/OrderSlice";
-import { getTotalPrice } from "../features/CartSlice";
 import OrderAction from "./OrderAction";
 import "../styles/Cart.css";
 
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
-  const totalPrice = useSelector(getTotalPrice);
+  const { userName } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const getId = () => {
-    let result = "";
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    for (let i = 0; i < 7; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      result += characters.charAt(randomIndex);
-    }
-    return result;
-  };
-
-  const id = getId();
-
-  const submitOrder = () => {
-    dispatch(orderItem({ id, cartItems, totalPrice }));
-    navigate("/order/new", { state: { id } });
-  };
 
   return (
     <section className="orders">
@@ -36,11 +17,11 @@ const Cart = () => {
           <Link to="/menu" className="back">
             ← Back to menu
           </Link>
-          {cartItems.length ? <h1>Your cart, haeo</h1> : null}
+          {cartItems.length ? <h1>Your cart, {userName}</h1> : null}
         </div>
         {cartItems.length ? (
           cartItems.map((item) => (
-            <div key={item.id}>
+            <div key={item.pizzaId}>
               <div className="order-item">
                 <p>
                   {item.quantity} x {item.name}
@@ -49,8 +30,7 @@ const Cart = () => {
                   <p className="total-amount">
                     ${(item.price * item.quantity).toFixed(2)}
                   </p>
-
-                  <OrderAction key={item.id} item={item} />
+                  <OrderAction key={item.pizzaId} item={item} />
                 </div>
               </div>
             </div>
@@ -66,7 +46,7 @@ const Cart = () => {
               type="button"
               className="order-btn"
               value="Order Pizzas"
-              onClick={submitOrder}
+              onClick={() => navigate("/order/new")}
             />
             <input
               type="button"

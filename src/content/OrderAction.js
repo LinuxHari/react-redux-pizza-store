@@ -15,22 +15,23 @@ const OrderAction = ({ item }) => {
         type="button"
         className="action decrement"
         value="-"
-        onClick={() => dispatch(decreaseQuantity({ id: item.id }))}
+        onClick={() => dispatch(decreaseQuantity({ pizzaId: item.id }))}
       />
       <span className="count">
-        {cartItems.find((cartItem) => cartItem.id === item.id)?.quantity || 0}
+        {cartItems.find((cartItem) => cartItem.pizzaId === item.id)?.quantity ||
+          0}
       </span>
       <input
         type="button"
         className="action increment"
         value="+"
-        onClick={() => dispatch(increaseQuantity({ id: item.id }))}
+        onClick={() => dispatch(increaseQuantity({ pizzaId: item.id }))}
       />
       <input
         type="button"
         className="action delete"
         value="Delete"
-        onClick={() => dispatch(removeItem({ id: item.id }))}
+        onClick={() => dispatch(removeItem({ pizzaId: item.id }))}
       />
     </>
   );
