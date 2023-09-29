@@ -41,10 +41,10 @@
   height: 20px;
   padding: 10px 20px;
   width: min(40vw, 100%);
-  border: 2px solid lightgray;
+  border: 3px solid lightgray;
   border-radius: 20px;
   font-size: 20px;
-  transition: border 0.3s ease;
+  transition: border 0.2s ease;
 }
 
 .data-field input:focus {
@@ -83,9 +83,19 @@
   background-color: #fabc64;
 }
 
+.place-order-btn:focus {
+  border: 2px solid white;
+  outline: 3px solid var(--bg-color);
+}
+
 .checkbox {
   accent-color: var(--bg-color);
   border: 5px solid white;
+}
+
+.checkbox:focus {
+  outline: 2px solid white;
+  border: 3px solid var(--bg-color);
 }
 
 .order-contents input[type="checkbox"]:focus {

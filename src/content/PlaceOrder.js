@@ -26,7 +26,7 @@ const PlaceOrder = () => {
       cart: cartItems,
       position: "",
     });
-    navigate(`/order/${result.data.id}`);
+    if (result.data) navigate(`/order/${result.data.id}`);
     reset();
     dispatch(clearCart());
   };

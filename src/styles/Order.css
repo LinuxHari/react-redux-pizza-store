@@ -112,6 +112,11 @@
   background-color: #fabc64;
 }
 
+.priority-btn input:focus {
+  outline: 2px solid var(--bg-color);
+  border: 2px solid white;
+}
+
 .error {
   text-align: center;
 }
