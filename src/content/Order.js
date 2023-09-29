@@ -9,7 +9,7 @@ import Loading from "../Loading";
 
 const Order = () => {
   const { id } = useParams();
-  const [order, setOrder] = useState([]);
+  const [order, setOrder] = useState("");
   const [isPriority, setIsPriority] = useState(false);
   const { items } = useSelector((state) => state.menu);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,12 +18,12 @@ const Order = () => {
     const fetchOrder = async () => {
       try {
         const response = await getOrder(id);
-        if (response.length) {
+        if (response.data) {
           setOrder(response.data);
           setIsPriority(response.data.priority);
         }
       } catch {
-        console.log("Order is not found");
+        console.error("Order is not found");
       } finally {
         setIsLoading(false);
       }
@@ -39,7 +39,7 @@ const Order = () => {
   const remainingTime = getRemainingTime(order.estimatedDelivery);
   const deliveryTime = formatDate(order.estimatedDelivery);
   if (isLoading) return <Loading />;
-  if (order.length)
+  if (order)
     return (
       <section className="order-status">
         <div className="order-name">

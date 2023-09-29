@@ -15,7 +15,7 @@ export const placeOrder = async (order) => {
 export const getOrder = async (id) => {
   try {
     const result = await axios.get(`${API_URL}/order/${id}`);
-    if (result.data.length) return result.data;
+    if (result && result.data) return result.data;
   } catch (err) {
     if (err.response) console.log(err.response.data.message);
     else console.log(err.message);
