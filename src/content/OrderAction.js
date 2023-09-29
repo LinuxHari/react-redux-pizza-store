@@ -5,10 +5,10 @@ import {
   decreaseQuantity,
 } from "../features/CartSlice";
 
-const OrderAction = ({ item }) => {
+const OrderAction = ({ item, cartItem }) => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-
+  item = cartItem ? { ...cartItem, id: cartItem.pizzaId } : item;
   return (
     <>
       <input

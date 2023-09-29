@@ -30,7 +30,7 @@ const Cart = () => {
                   <p className="total-amount">
                     ${(item.price * item.quantity).toFixed(2)}
                   </p>
-                  <OrderAction key={item.pizzaId} item={item} />
+                  <OrderAction key={item.pizzaId} cartItem={item} />
                 </div>
               </div>
             </div>
