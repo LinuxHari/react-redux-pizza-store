@@ -67,9 +67,9 @@ const Order = () => {
           <div className="order-information" key={item.pizzaId}>
             <div className="order-items">
               <p>
-                {item.quantity}x {item.name}
+                <span className="bold">{item.quantity}×</span> {item.name}
               </p>
-              <p>${item.totalPrice.toFixed(2)}</p>
+              <span className="bold">${item.totalPrice.toFixed(2)}</span>
             </div>
             <div className="order-ingredients">
               <FetchIngredients id={item.pizzaId} items={items} />

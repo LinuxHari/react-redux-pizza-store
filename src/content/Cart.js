@@ -24,7 +24,7 @@ const Cart = () => {
             <div key={item.pizzaId}>
               <div className="order-item">
                 <p>
-                  {item.quantity} x {item.name}
+                  {item.quantity}× {item.name}
                 </p>
                 <div className="order-quantity">
                   <p className="total-amount">
