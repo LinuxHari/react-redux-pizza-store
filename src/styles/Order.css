@@ -108,6 +108,10 @@
   cursor: pointer;
 }
 
+.priority-btn input:hover {
+  background-color: #fabc64;
+}
+
 .error {
   text-align: center;
 }

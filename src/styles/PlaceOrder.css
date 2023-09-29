@@ -79,6 +79,10 @@
   cursor: pointer;
 }
 
+.place-order-btn:hover {
+  background-color: #fabc64;
+}
+
 .checkbox {
   accent-color: var(--bg-color);
   border: 5px solid white;

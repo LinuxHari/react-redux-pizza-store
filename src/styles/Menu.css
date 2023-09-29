@@ -26,6 +26,7 @@
   padding: 5px;
   gap: 10px;
   border-bottom: 0.1px solid lightgray;
+  height: auto;
 }
 
 .menu-item img {
@@ -44,6 +45,7 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
+  height: 40px;
 }
 
 .menu-item .item-events {
@@ -51,6 +53,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  height: 40px;
+  padding: 5px;
 }
 
 .menu-item .item-actions {
@@ -65,10 +69,14 @@
   border: none;
   font-weight: 600;
   font-size: 12px;
-  padding: 12px 20px;
+  padding: 10px 20px;
   border-radius: 20px;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.menu-item input:hover {
+  background-color: #fabc64;
 }
 
 .menu-item input:focus {
@@ -96,6 +104,7 @@
 
 .item-ingredients {
   font-style: italic;
+  text-transform: capitalize;
 }
 
 .item-price {
@@ -113,6 +122,15 @@
   }
   .menu-item {
     width: 96vw;
+    height: 100px;
+  }
+  .menu-item .item-contents {
+    height: 50px;
+  }
+
+  .menu-item .item-events {
+    height: 40px;
+    padding-top: 10px;
   }
   .menu-item input {
     padding: 9px 15px;
@@ -127,6 +145,9 @@
     padding: 10px;
     height: 30px;
     width: auto;
+  }
+  .item-ingredients {
+    font-size: 15px;
   }
 }
 

@@ -272,3 +272,24 @@
     font-size: 1em;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .loading {
+    background-color: transparent;
+    padding-top: 80px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .loading {
+    background-color: transparent;
+    padding-top: 120px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .loading {
+    background-color: transparent;
+    padding-top: 180px;
+  }
+}
