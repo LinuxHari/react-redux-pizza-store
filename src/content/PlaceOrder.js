@@ -12,7 +12,7 @@ const PlaceOrder = () => {
   const quantity = useSelector(getQuantity);
   const { userName } = useSelector((state) => state.user);
   const { register, handleSubmit, formState, reset } = useForm();
-  const { errors } = formState;
+  const { errors, isSubmitting } = formState;
   const navigate = useNavigate();
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -128,10 +128,14 @@ const PlaceOrder = () => {
             <input
               type="submit"
               className="place-order-btn"
-              value={`Order now from $${(isChecked
-                ? totalPrice + priorityCharge
-                : totalPrice
-              ).toFixed(2)}`}
+              value={
+                isSubmitting
+                  ? "Placing Order..."
+                  : `Order now from $${(isChecked
+                      ? totalPrice + priorityCharge
+                      : totalPrice
+                    ).toFixed(2)}`
+              }
             />
           </div>
         </form>
