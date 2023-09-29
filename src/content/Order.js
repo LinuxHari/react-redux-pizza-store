@@ -27,7 +27,7 @@ const Order = () => {
       }
     };
     fetchOrder();
-  }, [id]);
+  }, [id, isPriority]);
 
   const getPriority = async (id) => {
     await makePriority(id);
