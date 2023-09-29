@@ -130,7 +130,7 @@ const PlaceOrder = () => {
               className="place-order-btn"
               value={
                 isSubmitting
-                  ? "Placing Order..."
+                  ? "Placing Order . . ."
                   : `Order now from $${(isChecked
                       ? totalPrice + priorityCharge
                       : totalPrice
